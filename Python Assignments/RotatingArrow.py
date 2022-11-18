@@ -171,4 +171,4 @@ for n in (x):
 					cntr2 +=1	
 					break;
 		
-						
+		
