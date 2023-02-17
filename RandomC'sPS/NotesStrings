@@ -22,23 +22,164 @@
 //            char a = 'aa';
 //            printf("%c", a);
 //the output will be:
-//             error because this is a multi character not one 
+//             error because this is a multi character not one
+//
+//The scanf() function reads the sequence of characters until it encounters whitespace (space, newline, tab, etc.).
+//
+//#include <stdio.h>
+//int main()
+// {
+//    char name[20];
+//    printf("Enter name: ");
+//    scanf("%s", name);
+//    printf("Your name is %s.", name);
+//    return 0;
+// }
+////i entered "Dennis Ritchie"the output will be:
+//             Dennis 
+//
+//Even though Dennis Ritchie was entered in the above program, only "Dennis" was stored in the name string. It's because there was a space after Dennis.
+//
+//Also notice that we have used the code name instead of &name with scanf().
+//
+//scanf("%s", name);
+//This is because name is a char array, and we know that array names decay to pointers in C.
+//
+//Thus, the name in scanf() already points to the address of the first element in the string, which is why we don't need to use &.
+//
+//How to read a line of text?
+//You can use the fgets() function to read a line of string. And, you can use puts() to display the string.
+//#include <stdio.h>
+//int main()
+//{
+//    char name[30];
+//    printf("Enter name: ");
+//    fgets(name, sizeof(name), stdin);  // read string
+//    printf("Name: ");
+//    puts(name);    // display string
+//    return 0;
+//}
+//Output
+//
+//Enter name: Tom Hanks
+//Name: Tom Hanks
+//
+//Here, we have used fgets() function to read a string from the user.
+//
+//fgets(name, sizeof(name), stdlin); // read string
+//
+//The sizeof(name) results to 30. Hence, we can take a maximum of 30 characters as input which is the size of the name string.
+//
+//To print the string, we have used puts(name);.
+//
+//Note: The gets() function can also be to take input from the user. However, it is removed from the C standard.
+//
+//It's because gets() allows you to input any length of characters. Hence, there might be a buffer overflow.//
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/  *****************************************************************POINTERS************************************************************** 
+// Equivalent to sum += x[i]
+//      sum += *(x+i);
 
 
+//   #include <stdio.h>
+//   int main() {
+// 
+//   int x[5] = {1, 2, 3, 4, 5};
+//   int* ptr;
+// 
+//   // ptr is assigned the address of the third element
+//   ptr = &x[2]; 
+// 
+//   printf("*ptr = %d \n", *ptr);   // 3
+//   printf("*(ptr+1) = %d \n", *(ptr+1)); // 4
+//   printf("*(ptr-1) = %d", *(ptr-1));  // 2
+// 
+//   return 0;
+//   }
+// 
+// 
+// #include <stdio.h>
+
+int main(void) {
+  char name[] = "Harry Potter";
+
+  printf("%c", *name);     // Output: H
+  printf("%c", *(name+1));   // Output: a
+  printf("%c", *(name+7));   // Output: o
+
+  char *namePtr;
+
+  namePtr = name;
+  printf("%c", *namePtr);     // Output: H
+  printf("%c", *(namePtr+1));   // Output: a
+  printf("%c", *(namePtr+7));   // Output: o
+}
+// 
+// 
+// #include <stdio.h>
+void swap(int *n1, int *n2);
+
+int main()
+{
+    int num1 = 5, num2 = 10;
+
+    // address of num1 and num2 is passed
+    swap( &num1, &num2);
+
+    printf("num1 = %d\n", num1);
+    printf("num2 = %d", num2);
+    return 0;
+}
+
+void swap(int* n1, int* n2)
+{
+    int temp;
+    temp = *n1;
+    *n1 = *n2;
+    *n2 = temp;
+}
+When *n1 and *n2 are changed inside the swap() function, num1 and num2 inside the main() function are also changed.
+
+Inside the swap() function, *n1 and *n2 swapped. Hence, num1 and num2 are also swapped.
+
+Notice that swap() is not returning anything; its return type is void.
 
 
+#include <stdio.h>
 
+void addOne(int* ptr) {
+  (*ptr)++; // adding 1 to *ptr
+}
 
+int main()
+{
+  int* p, i = 10;
+  p = &i;
+  addOne(p);
 
+  printf("%d", *p); // 11
+  return 0;
+}
 
+Here, the value stored at p, *p, is 10 initially.
 
+We then passed the pointer p to the addOne() function. The ptr pointer gets this address in the addOne() function.
 
-
-
+Inside the function, we increased the value stored at ptr by 1 using (*ptr)++;. Since ptr and p pointers both have the same address, *p inside main() is also 11.
 
 
 
