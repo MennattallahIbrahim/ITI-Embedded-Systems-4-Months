@@ -1,0 +1,57 @@
+/  *****************************************************************STRINGS*************************************************************** 
+// to assign string: 
+//                  char str[] = "Menna";
+// to print string:                      
+//                  printf("%s", str);
+//the output in cmd:
+//                  Menna
+//but if we did this: 
+//                 char str[] = "Menna";
+//                 printf("%c", str);
+//the output in cmd:
+//                  non sense
+//
+//if we wrote:    
+//           char a = 'a';
+//           printf("%c", a);                  
+//the output will be:
+//           a
+//note: to assign char you have to use '' not "" 
+//if you used %s instead of %c it won't print anything on the cmd screen   
+//if you wrote:
+//            char a = 'aa';
+//            printf("%c", a);
+//the output will be:
+//             error because this is a multi character not one 
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
