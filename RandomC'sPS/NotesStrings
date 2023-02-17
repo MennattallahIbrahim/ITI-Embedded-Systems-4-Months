@@ -189,6 +189,53 @@
 //  ++x + ++x = ?
 //  output:  14
 //
+****************************
+#include <stdio.h>
+int main() {
+   int i = 7;
+printf("%d\n", i++ * i++);
+}
+
+output: 7*8 = 56 
+
+***************************************************************************************************************
+#include <stdio.h>
+int main() { 
+	int a=3,b=4;
+	a ^= b ^= a ^= b;
+printf("%d\n", a );
+printf("%d\n", b );
+}
+output: 4,3
+
+
+To understand this trick, break the statements into unique values:
+
+x1 = x xor y
+y1 = x1 xor y
+x2 = x1 xor y1
+According to our code, x2 should have y’s original value. Let’s work out the details for the last step:
+
+x2 = x1 xor y1
+x2 = x1 xor (x1 xor y)   // replace y1
+x2 = (x1 xor x1) xor y   // regroup parenthesis - order does not matter for XOR
+x2 = 0 xor y             // a xor a => 0
+x2 = y                   // 0 xor a => a; x2 now has y's original value
+Wow – x2 really does equal y! The swap happened. Now let’s try it out for y1:
+
+y1 = x1 xor y
+y1 = (x xor y) xor y
+y1 = x xor (y xor y)
+y1 = x xor 0
+y1 = x                  // y1 == x's original value
+And tada the trick worked again. x2 and y1 have the swapped answers.
+
+
+***************************************************************************************************************************
+
+
+
+
 
 
 
