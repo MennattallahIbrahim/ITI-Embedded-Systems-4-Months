@@ -233,16 +233,83 @@ And tada the trick worked again. x2 and y1 have the swapped answers.
 
 ***************************************************************************************************************************
 
+Syntax of malloc()
+ptr = (castType*) malloc(size);
+Example
+
+ptr = (float*) malloc(100 * sizeof(float));
+The above statement allocates 400 bytes of memory. It's because the size of float is 4 bytes. And, the pointer ptr holds the address of the first byte in the allocated memory.
+
+The expression results in a NULL pointer if the memory cannot be allocated.
+
+***************************************************************************************************************************
+
+C calloc()
+The name "calloc" stands for contiguous allocation.
+
+The malloc() function allocates memory and leaves the memory uninitialized, whereas the calloc() function allocates memory and initializes all bits to zero.
+
+Syntax of calloc()
+ptr = (castType*)calloc(n, size);
+Example:
+
+ptr = (float*) calloc(25, sizeof(float));
+The above statement allocates contiguous space in memory for 25 elements of type float.
+***************************************************************************************************************************
+
+C free()
+Dynamically allocated memory created with either calloc() or malloc() doesn't get freed on their own. You must explicitly use free() to release the space.
+
+Syntax of free()
+free(ptr);
+This statement frees the space allocated in the memory pointed by ptr.
+
+
+***************************************************************************************************************************
 
 
 
+#include <stdio.h>
+int main() {
+   //Example: char const*
+   //Note: char const* is same as const char*
+   const char p = 'A';
+   // q is a pointer to const char
+   char const* q = &p;
+   //Invalid asssignment
+   // value of p cannot be changed
+   // error: assignment of read-only location '*q'
+   //*q = 'B';
+   const char r = 'C';
+   //q can point to another const char
+   q = &r;
+   printf("%c
+", *q);
+   //Example: char* const
+   char u = 'D';
+   char * const t = &u;
+   //You can change the value
+   *t = 'E';
+   printf("%c", *t);
+   // Invalid asssignment
+   // t cannot be changed
+   // error: assignment of read-only variable 't'
+   //t = &r;
+   //Example: char const* const
+   char const* const s = &p;
+   // Invalid asssignment
+   // value of s cannot be changed
+   // error: assignment of read-only location '*s'
+   // *s = 'D';
+   // Invalid asssignment
+   // s cannot be changed
+   // error: assignment of read-only variable 's'
+   // s = &r;
+   return 0;
+}
 
 
-
-
-
-
-
+output  : CE
 
 
 
